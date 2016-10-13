@@ -4,24 +4,32 @@
 	angular.module('chatApp')
 		.controller('homeController', main);
 
-	main.$inject = ['$scope', '$state', 'firebaseData', 'mainData'];
+	main.$inject = ['$scope', '$rootScope', '$state', 'firebaseData', 'mainData'];
 
-	function main($scope, $state, firebase, mainData) {
+	function main($scope, $rootScope, $state, firebase, mainData) {
 
 		$scope.firebase = firebase;
 		$scope.mainData = mainData;
 		$scope.brand = "chat-box";
+		$scope.messages = [];
 
-		$scope.messages = [
-			{user: 'Sally', status: 'Online'},
-			{user: 'Corbin', status: 'Away'},
-			{user: 'Billy', status: 'Offline'}
-		]
+		firebase.ref('/users/').on('value', function(snapshot) {
+			$scope.messages = snapshot.val();
+			$scope.messages.shift();
+			// filter out self
+			$scope.messages = $scope.messages.filter(function(message, i) {
+				if (message.username != mainData.user.name) {
+					return message;
+				}
+			})
+			console.log($scope.messages);
+			$rootScope.$apply();
+			setStatusColor();
+		})
 
 		// on view load
 		$scope.$on('$viewContentLoaded', function() {
 			distributeWidth();
-			setStatusColor();
 		})
 
 		// on window resize
@@ -42,7 +50,7 @@
 
 		function setStatusColor() {
 			$scope.messages.forEach(function(message) {
-				var element = $(`#${message.user}-status`);
+				var element = $(`#${message.username}-status`);
 				var color;
 				if (message.status === 'Online') {
 					color = 'rgb(117,255,117)';

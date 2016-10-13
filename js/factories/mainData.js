@@ -4,44 +4,42 @@
 	angular.module('chatApp')
 		.factory('mainData', main);
 
-	main.$inject = ['$state'];
+	main.$inject = ['$state', 'firebaseData'];
 
-	function main($state) {
+	function main($state, firebase) {
 		var factory = {};
 
 		factory.user = {
 			name: 'Vincent',
 			status: 'Online'
 		};
-		factory.messages = [
-			{
-				user1: 'Vincent',
-				user2: 'Sally',
-				msgArray: [
-					{user: 'Vincent', body: 'Hello'},
-					{user: 'Sally', body: 'Hi'},
-					{user: 'Vincent', body: 'adsfadsfasdf asdf asd fas df asd f asdfasdfas df dsa f ads fasasdfasd fsa df sad f asd f asd f asdf  sad f sad f asd f asd f asd f asd f as df as  a a  a a a a a  a a a a a a a a  a a'},
-					{user: 'Vincent', body: 'asdfasdf asd f asdf a sdf asd f sad f  '}
-				]
-			}
-		]
+
+		firebase.ref('/chats/').on('value', function(snapshot) {
+			factory.chats = snapshot.val();
+		})
 
 		factory.loadChat = function(message) {
-			factory.message = message; // message.user is the other username
-			var change = false;
+			factory.message = message; // message.username
 			// loop through message array to find correct chat
-			factory.messages.forEach(function(chat) {
-				if (factory.user.name === chat.user1 || factory.user.name === chat.user2) {
-					if (factory.message.user === chat.user1 || factory.message.user === chat.user2) {
-						factory.chat = chat;
-						change = true;
+			factory.chats.forEach(function(chat, i) {
+				var foundSelf = false;
+				var foundOther = false;
+				chat.forEach(function(user) {
+					if (user === factory.user.name) {
+						foundSelf = true;
 					}
+					else if (user === message.username) {
+						foundOther = true;
+					}
+				})
+				// if correct chat is found, retrieve the chat history
+				if (foundSelf && foundOther) {
+					firebase.ref('/messages/' + i).on('value', function(snapshot) {
+						factory.chat = snapshot.val();
+						$state.go('chat');
+					})
 				}
-			})
-			if (!change) {
-				factory.chat = 'New Chat';
-			}
-			$state.go('chat');
+			}) // end of factory.chats.forEach
 		}
 
 		return factory;
