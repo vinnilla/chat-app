@@ -13,6 +13,15 @@
 		$scope.$on('$viewContentLoaded', function() {
 		})
 
+		$scope.checkSelf = function(user) {
+			if (user === mainData.user.name) {
+				return 'own-message';
+			}
+			else {
+				return '';
+			}
+		}
+
 	} // end of main
 
 })()

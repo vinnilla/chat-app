@@ -1,4 +1,6 @@
 <h1 id="chat-header">{{mainData.message.user}}</h1>
 <ul id="chat-body">
-	<li ng-repeat="message in mainData.chat.msgArray">{{message.body}}</li>
+	<li ng-repeat="message in mainData.chat.msgArray" ng-class="checkSelf(message.user)" class="chat-message">
+		<div>{{message.body}}</div>
+	</li>
 </ul>
