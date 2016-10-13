@@ -12,6 +12,11 @@
 					controller: 'homeController',
 					templateUrl: 'views/home.html'
 				})
+				.state('chat', {
+					url: '/chat',
+					controller: 'chatController',
+					templateUrl: 'views/chat.html'
+				})
 
 		}) // end of config
 })();
