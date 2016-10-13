@@ -1,0 +1,55 @@
+body {
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+#main-container {
+	display: flex;
+	flex-flow: row nowrap;
+	align-content: space-between;
+}
+
+#chat-nav {
+	background: rgba(0,64,110,1);
+	height: 100vh;
+	width: 220px;
+	box-shadow: 2px 0px 0px rgba(0,64,110,0.7);
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: space-between;
+	padding: 20px 20px;
+}
+
+#brand {
+	width: 100%;
+	color: white;
+	font-size: 25px;
+	font-weight: 900;
+	margin-bottom: 25px;
+}
+
+#messages {
+	width: 100%;
+}
+#message-list {
+	padding: 0;
+	color: white;
+	list-style: none;
+}
+#message-list li {
+	margin-bottom: 20px;
+	padding: 5px 0 5px 5px;
+	border-radius: 25px;
+}
+.status-icon {
+	width: 5px;
+	height: 5px;
+	border-radius: 100px;
+	background: white;
+	display: inline-block;
+}
+
+#angular-body {
+	height: 100vh;
+	width: 100px;
+}
