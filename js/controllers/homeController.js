@@ -4,10 +4,12 @@
 	angular.module('chatApp')
 		.controller('homeController', main);
 
-	main.$inject = ['$scope', 'firebaseData'];
+	main.$inject = ['$scope', '$state', 'firebaseData', 'mainData'];
 
-	function main($scope, database) {
+	function main($scope, $state, firebase, mainData) {
 
+		$scope.firebase = firebase;
+		$scope.mainData = mainData;
 		$scope.brand = "chat-box";
 
 		$scope.messages = [
@@ -25,6 +27,11 @@
 		// on window resize
 		$(window).resize(function() {
 			distributeWidth();
+		})
+
+		// on window load, default to home state
+		$(document).ready(function() {
+			$state.go('home');
 		})
 
 		function distributeWidth() {
