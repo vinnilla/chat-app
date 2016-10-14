@@ -44,6 +44,8 @@
 		}
 
 		function setStatusColor() {
+			$(`#${mainData.user.name}-status`).css('background', 'rgb(117,255,117)');
+
 			$scope.messages.forEach(function(message) {
 				var element = $(`#${message.username}-status`);
 				var color;

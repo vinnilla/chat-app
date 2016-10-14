@@ -13,9 +13,13 @@
 	<div id="main-container">
 		<div id="chat-nav">
 			<div id="brand" ui-sref="home" ng-click="mainData.updateSavedState('home', 'none')">{{brand}}</div>
+			<div id="currentUser">
+				<div class="status-icon" id="{{mainData.user.name}}-status"></div>
+				{{mainData.user.name}}
+			</div>
 			<div id="messages">
 				<ul id="message-list">
-					<li ui-sref="chat" ng-repeat="message in messages" ng-click="mainData.loadChat(message)">
+					<li ui-sref="chat" ng-repeat="message in messages" id="{{message.username}}" class="users" ng-click="mainData.loadChat(message)">
 						<div class="status-icon" id="{{message.username}}-status"></div>
 						{{message.username}}
 					</li>

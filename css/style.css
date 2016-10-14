@@ -23,9 +23,15 @@ body {
 
 #brand {
 	color: white;
-	font-size: 25px;
+	font-size: 2em;
 	font-weight: 900;
-	margin: 20px 20px 25px 20px;
+	margin: 20px 20px 0 20px;
+}
+#currentUser {
+	font-size: 14px;
+	margin: 0 20px;
+	padding: 5px;
+	color: white;
 }
 
 #messages {
@@ -38,9 +44,9 @@ body {
 	list-style: none;
 }
 #message-list li {
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	padding: 5px 0 5px 5px;
-	border-radius: 25px;
+	border-radius: 5px 5px 25px 5px;
 }
 .status-icon {
 	width: 5px;

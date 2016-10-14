@@ -34,6 +34,9 @@
 		})
 
 		factory.loadChat = function(message) {
+			$('.users').css('background', 'none');
+			$(`#${message.username}`).css('background', 'rgba(0, 128, 220, 1)')
+
 			if (factory.message.username != message.username){
 
 			factory.message = message; // message.username
