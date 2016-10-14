@@ -62,6 +62,11 @@
 			}) // end of factory.chats.forEach
 
 			}
+
+			// mobile functionality
+			if (window.innerWidth < 480) {
+				$('#chat-nav').css('display', 'none').css('width', '0');
+			}
 		}
 
 		factory.updateSavedState = function(state, other) {

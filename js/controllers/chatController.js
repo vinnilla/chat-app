@@ -15,6 +15,7 @@
 			setTimeout(function() {
 				// auto scroll to bottom
 				var height = $('#chat-body').height();
+				console.log(height);
 				$('#chat-body').scrollTop(height);
 				pushToBottom();
 			},1)

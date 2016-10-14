@@ -62,6 +62,11 @@
 			})
 		}
 
+		// mobile functions
+		$scope.showNav = function() {
+			$('#chat-nav').css('display', 'flex').css('width', '100vw');
+		}
+
 	} // end of main
 
 })();

@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chat</title>
+	<!-- font awesome -->
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css ">
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<!-- custom css -->
@@ -26,7 +28,11 @@
 				</ul>
 			</div>
 		</div>
+
 		<div id="angular-body" ui-view></div>
+		<div id="mobile-nav">
+			<div ng-click="showNav()"><i class="fa fa-users" aria-hidden="true"></i></div>
+		</div>
 	</div>	
 
 

@@ -21,6 +21,45 @@ body {
 	align-content: space-between;
 }
 
+@media only screen and (max-width: 480px) {
+	#chat-nav {
+		display:none;
+		width: 0;
+	}
+	#angular-body {
+		height: 95vh !important;
+	}
+	#main-container {
+		flex-flow: column nowrap !important;
+	}
+	#mobile-nav {
+		display: flex !important;
+		flex-flow: row nowrap;
+		justify-content: center;
+		width: 100vw;
+		height: 5vh;
+		background: rgba(0,64,110,1);
+		color: white;
+	}
+	#mobile-nav div {
+		height: 5vh;
+		width: 10vw;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+	}
+	#chat-container {
+		height: 77.5vh !important;
+	}
+	#chat-body {
+		max-height: 77.5vh !important;
+	}
+}
+
+#mobile-nav {
+	display:none;
+}
+
 #brand {
 	color: white;
 	font-size: 2em;
