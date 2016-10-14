@@ -16,7 +16,7 @@
 				// auto scroll to bottom
 				var height = $('#chat-body').height();
 				$('#chat-body').scrollTop(height);
-			},1000)
+			},1)
 		})
 
 

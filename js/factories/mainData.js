@@ -55,7 +55,7 @@
 						factory.chat = snapshot.val();
 						factory.chatIndex = i;
 						factory.updateSavedState('chat', message.username);
-						$rootScope.$digest(); // necessary for first visit to chat but afterwards produces errors
+						$state.reload();
 					})
 				}
 			}) // end of factory.chats.forEach
