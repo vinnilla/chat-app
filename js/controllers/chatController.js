@@ -4,13 +4,14 @@
 	angular.module('chatApp')
 		.controller('chatController', main);
 
-	main.$inject = ['$scope', 'mainData', 'firebaseData'];
+	main.$inject = ['$scope', '$rootScope', 'mainData', 'firebaseData'];
 
-	function main($scope, mainData, firebase) {
+	function main($scope, $rootScope, mainData, firebase) {
 		
 		$scope.mainData = mainData;
 
 		$scope.$on('$viewContentLoaded', function() {
+			// $rootScope.$apply();
 		})
 
 		$scope.checkSelf = function(user) {

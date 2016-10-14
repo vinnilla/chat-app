@@ -22,7 +22,7 @@
 					return message;
 				}
 			})
-			console.log($scope.messages);
+			// console.log($scope.messages);
 			$rootScope.$apply();
 			setStatusColor();
 		})
@@ -37,9 +37,15 @@
 			distributeWidth();
 		})
 
-		// on window load, default to home state
+		// on window load, grab state from firebase and apply
 		$(document).ready(function() {
-			$state.go('home');
+			firebase.ref('states/' + mainData.user.index).on('value', function(snapshot) {
+				var state = snapshot.val();
+				$state.go(state.state);
+				if (state.state === 'chat') {
+					mainData.loadChat({username: state.other});
+				}
+			})
 		})
 
 		function distributeWidth() {

@@ -12,7 +12,8 @@
 		factory.message = {};
 		factory.user = {
 			name: 'Vincent',
-			status: 'Online'
+			status: 'Online',
+			index: 4
 		};
 		factory.chatIndex;
 
@@ -42,12 +43,20 @@
 					firebase.ref('/messages/' + i).on('value', function(snapshot) {
 						factory.chat = snapshot.val();
 						factory.chatIndex = i;
+						updateSavedState('chat', message.username);
 						$rootScope.$digest(); // necessary for first visit to chat but afterwards produces errors
 					})
 				}
 			}) // end of factory.chats.forEach
 
 			}
+		}
+
+		function updateSavedState(state, other) {
+			firebase.ref('states/' + factory.user.index).set({
+	  		state: state,
+	  		other: other
+	  	})
 		}
 
 		return factory;

@@ -43,6 +43,15 @@
 		  console.log('database users seeded');
 	  }
 
+	  function seedStates() {
+
+	  	database.ref('states/' + 4).set({
+	  		state: 'home',
+	  		other: 'none'
+	  	})
+
+	  }
+
 
 	  function seedChats() {
 
@@ -73,6 +82,7 @@
 	  }
 
 	  // seedUsers();
+	  // seedStates();
 	  // seedChats();
 	  // seedMessages();
 	  return database;
