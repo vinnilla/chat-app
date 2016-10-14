@@ -12,7 +12,7 @@
 
 	<div id="main-container">
 		<div id="chat-nav">
-			<div id="brand" ui-sref="home">{{brand}}</div>
+			<div id="brand" ui-sref="home" ng-click="mainData.updateSavedState('home', 'none')">{{brand}}</div>
 			<div id="messages">
 				<ul id="message-list">
 					<li ui-sref="chat" ng-repeat="message in messages" ng-click="mainData.loadChat(message)">

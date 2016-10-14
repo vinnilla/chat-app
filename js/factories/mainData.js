@@ -17,6 +17,17 @@
 		};
 		factory.chatIndex;
 
+		// on window load, grab state from firebase and apply
+		$(document).ready(function() {
+			firebase.ref('states/' + factory.user.index).on('value', function(snapshot) {
+				var state = snapshot.val();
+				$state.go(state.state);
+				if (state.state === 'chat') {
+					factory.loadChat({username: state.other});
+				}
+			})
+		})
+
 
 		firebase.ref('/chats/').on('value', function(snapshot) {
 			factory.chats = snapshot.val();
@@ -43,7 +54,7 @@
 					firebase.ref('/messages/' + i).on('value', function(snapshot) {
 						factory.chat = snapshot.val();
 						factory.chatIndex = i;
-						updateSavedState('chat', message.username);
+						factory.updateSavedState('chat', message.username);
 						$rootScope.$digest(); // necessary for first visit to chat but afterwards produces errors
 					})
 				}
@@ -52,7 +63,7 @@
 			}
 		}
 
-		function updateSavedState(state, other) {
+		factory.updateSavedState = function(state, other) {
 			firebase.ref('states/' + factory.user.index).set({
 	  		state: state,
 	  		other: other

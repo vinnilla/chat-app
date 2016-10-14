@@ -37,17 +37,6 @@
 			distributeWidth();
 		})
 
-		// on window load, grab state from firebase and apply
-		$(document).ready(function() {
-			firebase.ref('states/' + mainData.user.index).on('value', function(snapshot) {
-				var state = snapshot.val();
-				$state.go(state.state);
-				if (state.state === 'chat') {
-					mainData.loadChat({username: state.other});
-				}
-			})
-		})
-
 		function distributeWidth() {
 			// distribute width of screen between navigation and ui-view
 			var navWidth = parseInt($('#chat-nav').css('width'));
@@ -70,7 +59,6 @@
 				element.css('background', color);
 			})
 		}
-
 
 	} // end of main
 
