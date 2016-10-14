@@ -13,6 +13,8 @@
 		$scope.brand = "chat-box";
 		$scope.messages = [];
 
+		
+
 		firebase.ref('/users/').on('value', function(snapshot) {
 			$scope.messages = snapshot.val();
 			$scope.messages.shift();
@@ -23,7 +25,10 @@
 				}
 			})
 			// console.log($scope.messages);
-			$rootScope.$apply();
+			if (mainData.once) {
+				$rootScope.$apply();
+				mainData.once = false;
+			}
 			setStatusColor();
 		})
 
@@ -76,6 +81,8 @@
 		$scope.showNav = function() {
 			$('#chat-nav').css('display', 'flex').css('width', '100vw');
 		}
+
+		mainData.clearActive();
 
 	} // end of main
 

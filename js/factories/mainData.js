@@ -16,13 +16,19 @@
 			index: 4
 		};
 		factory.chatIndex;
+		factory.once = true;
 
 		// on window load, grab state from firebase and apply
 		$(document).ready(function() {
 			firebase.ref('states/' + factory.user.index).on('value', function(snapshot) {
 				var state = snapshot.val();
 				// $state.go(state.state);
-				factory.loadChat({username: state.other});
+				if (state.state === 'chat') {
+					factory.loadChat({username: state.other});
+				}
+				else if (state.state === 'home') {
+					factory.clearActive();
+				}
 			})
 		})
 
@@ -32,7 +38,7 @@
 		})
 
 		factory.loadChat = function(message) {
-			$('.users').css('background', 'none').css('box-shadow', 'none');
+			factory.clearActive();
 			$(`#${message.username}`).css('background', 'rgba(0, 128, 220, 1)').css('box-shadow', '1px 1px 5px rgba(0,128,220,0.7)');
 
 			if (factory.message.username != message.username){
@@ -64,9 +70,7 @@
 			}
 
 			// mobile functionality
-			if (window.innerWidth < 480) {
-				$('#chat-nav').css('display', 'none').css('width', '0');
-			}
+			factory.hideNav();
 		}
 
 		factory.updateSavedState = function(state, other) {
@@ -74,6 +78,16 @@
 	  		state: state,
 	  		other: other
 	  	})
+		}
+
+		factory.clearActive = function() {
+			$('.users').css('background', 'none').css('box-shadow', 'none');
+		}
+
+		factory.hideNav = function() {
+			if (window.innerWidth < 480) {
+				$('#chat-nav').css('display', 'none').css('width', '0');
+			}
 		}
 
 		return factory;
