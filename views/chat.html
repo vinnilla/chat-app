@@ -1,7 +1,11 @@
 <h1 id="chat-header">{{mainData.message.username}}</h1>
-<ul id="chat-body">
-	<li ng-repeat="message in mainData.chat" ng-class="checkSelf(message.user)" class="chat-message">
-		<div>{{message.body}}</div>
-	</li>
-</ul>
+<div id="chat-container">
+	<div id="chat-spacer"></div>
+	<ul id="chat-body">
+		<div id="chat-top">Top of History</div>
+		<li ng-repeat="message in mainData.chat" ng-class="checkSelf(message.user)" class="chat-message">
+			<div>{{message.body}}</div>
+		</li>
+	</ul>
+</div>
 <input id="chat-input" ng-model="newMessage" type="text" placeholder="Type your message" autofocus>

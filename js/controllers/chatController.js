@@ -16,11 +16,12 @@
 				// auto scroll to bottom
 				var height = $('#chat-body').height();
 				$('#chat-body').scrollTop(height);
+				pushToBottom();
 			},1)
+
 		})
 
-
-
+		// add own-message class to messages sent by current user
 		$scope.checkSelf = function(user) {
 			if (user === mainData.user.name) {
 				return 'own-message';
@@ -30,6 +31,13 @@
 			}
 		}
 
+		function pushToBottom() {
+			var bodyHeight = $('#chat-body').height();
+			var containerHeight = $('#chat-container').height();
+			$('#chat-spacer').height(containerHeight-bodyHeight);
+		}
+
+		// event listener for the enter key
 		$('#chat-input').keydown(function(e) {
 			if(e.keyCode === 13) {
 				// update firebase
