@@ -73,7 +73,7 @@
 	  }
 
 	  // seedUsers();
-	  seedChats();
+	  // seedChats();
 	  // seedMessages();
 	  return database;
 
