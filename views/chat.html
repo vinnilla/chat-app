@@ -4,7 +4,10 @@
 	<ul id="chat-body">
 		<div id="chat-top">Top of History</div>
 		<li ng-repeat="message in mainData.chat" ng-class="checkSelf(message.user)" class="chat-message">
-			<div>{{message.body}}</div>
+			<div>
+				{{message.body}}
+				<span class="time-stamp">{{message.time}}</span>
+			</div>
 		</li>
 	</ul>
 </div>

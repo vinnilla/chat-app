@@ -40,10 +40,21 @@
 		// event listener for the enter key
 		$('#chat-input').keydown(function(e) {
 			if(e.keyCode === 13) {
+
+				// get current date and time
+				var currentdate = new Date(); 
+				var datetime = (currentdate.getMonth()+1) + "/"
+                + currentdate.getDate()  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+
 				// update firebase
 				var message = {
 					user: mainData.user.name,
-					body: $scope.newMessage
+					body: $scope.newMessage,
+					time: datetime
 				}
 				firebase.ref('messages/' + mainData.chatIndex).push(message);
 
