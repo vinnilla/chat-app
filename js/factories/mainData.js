@@ -21,10 +21,8 @@
 		$(document).ready(function() {
 			firebase.ref('states/' + factory.user.index).on('value', function(snapshot) {
 				var state = snapshot.val();
-				$state.go(state.state);
-				if (state.state === 'chat') {
-					factory.loadChat({username: state.other});
-				}
+				// $state.go(state.state);
+				factory.loadChat({username: state.other});
 			})
 		})
 
@@ -34,8 +32,8 @@
 		})
 
 		factory.loadChat = function(message) {
-			$('.users').css('background', 'none');
-			$(`#${message.username}`).css('background', 'rgba(0, 128, 220, 1)')
+			$('.users').css('background', 'none').css('box-shadow', 'none');
+			$(`#${message.username}`).css('background', 'rgba(0, 128, 220, 1)').css('box-shadow', '1px 1px 5px rgba(0,128,220,0.7)');
 
 			if (factory.message.username != message.username){
 

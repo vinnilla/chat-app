@@ -64,12 +64,28 @@ body {
 	margin: 2.5vh 20px 2.5vh 20px;
 }
 
+/*HOME STATE*/
+#home {
+	height: 100%;
+	width: 100%;
+	background: rgba(0,64,110,0.8);
+	color: white;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+#home h1, #home h2, #home h3 {
+	display: block;
+	text-align: center;
+}
+
 /*CHAT STATE*/
 #chat-header {
 	/*total height is 10vh*/
 	height: 5vh;
 	/*padding-bottom: 10px;*/
 	border-bottom: 1px solid rgba(0,0,0,0.2);
+	color: rgba(0, 128, 220, 1);
 }
 #chat-container {
 	height: 82.5vh;
@@ -94,6 +110,7 @@ body {
 	display:inline-block;
 	padding: 1%;
 	background: rgba(0, 128, 220, 1);
+	box-shadow: 3px 3px 5px rgba(0,64,110,0.7);
 	color: white;
 	text-align: left;
 }

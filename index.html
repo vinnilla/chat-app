@@ -12,7 +12,7 @@
 
 	<div id="main-container">
 		<div id="chat-nav">
-			<div id="brand" ui-sref="home" ng-click="mainData.updateSavedState('home', 'none')">{{brand}}</div>
+			<div ui-sref="home" id="brand" ng-click="mainData.updateSavedState('home', 'none')">{{brand}}</div>
 			<div id="currentUser">
 				<div class="status-icon" id="{{mainData.user.name}}-status"></div>
 				{{mainData.user.name}}
