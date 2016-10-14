@@ -32,6 +32,7 @@ body {
 	margin: 0 20px;
 }
 #message-list {
+	font-size: 18px;
 	padding: 0;
 	color: white;
 	list-style: none;
@@ -65,11 +66,12 @@ body {
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 #chat-body {
+	font-size: 18px;
 	height: 82.5vh;
 	list-style: none;
-	padding: 0;
-	margin: 0 20px 0 20px;
-	overflow: auto;
+	padding: 0 20px 0 0;
+	margin: 0 0 0 20px;
+	overflow-y: scroll;
 	/*flexbox was breaking overflow*/
 /*	display: flex;
 	flex-flow: column nowrap;
