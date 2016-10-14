@@ -35,12 +35,22 @@
 		// on window resize
 		$(window).resize(function() {
 			distributeWidth();
+			restoreNav();
 		})
 
 		function distributeWidth() {
 			// distribute width of screen between navigation and ui-view
 			var navWidth = parseInt($('#chat-nav').css('width'));
 			$('#angular-body').css('width', `${window.innerWidth-navWidth}px`);		
+		}
+
+		function restoreNav() {
+			if (window.innerWidth > 480) {
+				$('#chat-nav').css('display', 'flex').css('width', '220px');
+			}
+			else if (window.innerWidth < 480) {
+				$('#chat-nav').css('display', 'none').css('width', '0');
+			}
 		}
 
 		function setStatusColor() {
